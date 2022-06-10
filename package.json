@@ -1,0 +1,25 @@
+{
+  "name": "file_manager",
+  "version": "1.0.0",
+  "description": "file manager",
+  "type": "module",
+  "scripts": {
+    "test": "test",
+    "start": "node ./src/general/start.js --username=your_username"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TatsianaSlapik/File_manager.git"
+  },
+  "keywords": [
+    "nodejs",
+    "assignments",
+    "alreadybored"
+  ],
+  "author": "tatiana_slapik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TatsianaSlapik/File_manager/issues"
+  },
+  "homepage": "https://github.com/TatsianaSlapik/File_manager#readme"
+}
