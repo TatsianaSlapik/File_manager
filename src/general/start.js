@@ -6,6 +6,11 @@ import { upDirectory } from "../navigation/upDirectory.js";
 import { listDirectory } from "../navigation/listDirectory.js";
 import { changeDirectory } from "../navigation/changeDirectory.js";
 import { readAndPrintFile } from "../files/readAndPrintFile.js";
+import { addNewFile } from "../files/addNewFile.js";
+import { renameFile } from "../files/renameFile.js";
+import { copyFile } from "../files/copyFile.js";
+import { deleteFile } from "../files/deleteFile.js";
+import { moveFile } from "../files/moveFile.js";
 
 let rl = createInterface({ input, output });
 let currentDir = homedir();
@@ -30,38 +35,30 @@ let waitForCommandInput = function (name) {
         break;
       }
       case "cat": {
-        console.log("cat");
-        readAndPrintFile(answer.split(" ")[1]);
-        // readFileFunction();
+        readAndPrintFile(currentDir, answer.split(" ")[1]);
         break;
       }
       case "add": {
-        console.log("add");
+        addNewFile(currentDir, answer.split(" ")[1]);
 
-        // addFileFunction();
         break;
       }
       case "rn": {
-        console.log("rn");
-
-        // changeNameFunction();
+        renameFile(answer.split(" ")[1], answer.split(" ")[2]);
         break;
       }
       case "cp": {
-        console.log("cp");
+        copyFile(answer.split(" ")[1], answer.split(" ")[2]);
 
-        //copyFileFunction();
         break;
       }
       case "mv": {
-        console.log("mv");
-        // moveFileFunction();
+        moveFile(answer.split(" ")[1], answer.split(" ")[2]);
         break;
       }
-      case "delete": {
-        console.log("delete");
+      case "rm": {
+        deleteFile(answer.split(" ")[1]);
 
-        // deleteFileFunction();
         break;
       }
       case "os": {
