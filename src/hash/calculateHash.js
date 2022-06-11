@@ -6,12 +6,11 @@ export const calculateHash = async (pathHashFile) => {
   const typeReturned = "hex";
   const hash = createHash(typeHash);
   const readStream = createReadStream(pathHashFile);
+
   readStream.on("readable", function () {
     const content = readStream.read();
     if (content) {
-      console.log(hash.update(content).digest(typeReturned));
-    } else {
-      console.log("Operation failed");
+      return console.log(hash.update(content).digest(typeReturned));
     }
   });
 };
