@@ -1,4 +1,4 @@
-export const EOL = "EOL";
+export const EOL_COMMAND = "EOL";
 export const CPUS = "cpus";
 export const HOMEDIR = "homedir";
 
