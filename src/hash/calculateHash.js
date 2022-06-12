@@ -1,5 +1,5 @@
 import { existsSync, lstatSync } from "node:fs";
-import { readStreamHash } from "../files/until/readStreamHash,js";
+import { readStreamHash } from "../files/until/readStreamHash.js";
 
 export const calculateHash = async (pathHashFile) => {
   if (!existsSync(pathHashFile) || lstatSync(pathHashFile).isDirectory()) {
