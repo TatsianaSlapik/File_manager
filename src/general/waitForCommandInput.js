@@ -33,13 +33,12 @@ import {
 } from "../constant/constantGeneral.js";
 
 let currentDir = homedir();
+let rl = createInterface({ input, output });
 
-export const waitForCommandInput = function (name) {
-  let rl = createInterface({ input, output });
-
+export const waitForCommandInput = (name) => {
   console.log(`You are currently in ${currentDir}`);
 
-  rl.question("> ", function (answer) {
+  rl.question("> ", async function (answer) {
     const userCommand = answer.split(" ")[0];
     const arg1 = answer.split(" ")[1];
     const arg2 = answer.split(" ")[2];
@@ -58,7 +57,7 @@ export const waitForCommandInput = function (name) {
         break;
       }
       case CAT: {
-        readAndPrintFile(currentDir, arg1);
+        await readAndPrintFile(currentDir, arg1);
         break;
       }
       case ADD: {
@@ -71,7 +70,6 @@ export const waitForCommandInput = function (name) {
       }
       case CP: {
         copyFile(arg1, arg2);
-
         break;
       }
       case MV: {
@@ -87,7 +85,7 @@ export const waitForCommandInput = function (name) {
         break;
       }
       case HASH: {
-        calculateHash(arg1);
+        await calculateHash(arg1);
         break;
       }
       case COMPRESS: {

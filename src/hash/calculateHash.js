@@ -1,16 +1,11 @@
-import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { existsSync, lstatSync } from "node:fs";
+import { readStreamHash } from "../files/until/readStreamHash,js";
 
 export const calculateHash = async (pathHashFile) => {
-  const typeHash = "sha256";
-  const typeReturned = "hex";
-  const hash = createHash(typeHash);
-  const readStream = createReadStream(pathHashFile);
+  if (!existsSync(pathHashFile) || lstatSync(pathHashFile).isDirectory()) {
+    return console.log("Invalid input");
+  }
+  const hash = await readStreamHash(pathHashFile);
 
-  readStream.on("readable", function () {
-    const content = readStream.read();
-    if (content) {
-      return console.log(hash.update(content).digest(typeReturned));
-    }
-  });
+  return console.log(hash);
 };
